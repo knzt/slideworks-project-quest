@@ -77,11 +77,6 @@
   }
 
   @media only screen and (max-width: 756px) {
-    .nuka-carousel {
-      max-height: 10rem;
-      min-width: 100vw;
-    }
-
     .nuka-carousel-prevButton {
       display: none;
     }

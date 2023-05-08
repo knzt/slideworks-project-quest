@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import './MovieList.css';
+import { useEffect, useState } from 'react';
 // icons
 import { FaStar } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
@@ -15,6 +15,9 @@ function MovieList() {
 // para escolher a ordem de exibição da lista:
   const [sortOption, setSortOption] = useState(null);
   const [sortOrder, setSortOrder] = useState('asc');
+  const sortedMovies = sortOption ? sortMovies() : movies;
+  // para os botões de paginação
+  const [pageNumbers, setPageNumbers] = useState([1, 2, 3, '...', 21]);
 
 
   useEffect(() => {
@@ -44,8 +47,6 @@ function MovieList() {
     }
   }
 
-  const sortedMovies = sortOption ? sortMovies() : movies;
-
   function handleSortOptionChange(event) {
     setSortOption(event.target.value);
   }
@@ -54,6 +55,19 @@ function MovieList() {
     const sortOrder = event.target.value;
     setSortOrder(sortOrder);
   }
+
+  useEffect(() => {
+    // atualiza a lista de botões de paginação
+    const newPageNumbers = [];
+    if (page <= 3) {
+      newPageNumbers.push(1, 2, 3);
+    } else if (page >= 19) {
+      newPageNumbers.push(19, 20, 21);
+    } else {
+      newPageNumbers.push(page - 1, page, page + 1);
+    }
+    setPageNumbers(newPageNumbers);
+  }, [page]);
 
   function handlePageClick(newPage) {
     setPage(newPage);
@@ -91,18 +105,27 @@ function MovieList() {
           </li>
         ))}
       </ul>
+      {/* pagination */}
       <div className='pagination'>
         <button
-        className='paginationArrow'
-        onClick={() => handlePageClick(page - 1)} disabled={page === 1}>
-          <FaChevronLeft/>
+          className='paginationArrow'
+          onClick={() => handlePageClick(page - 1)}
+          disabled={page === 1}>
+            <FaChevronLeft/>
         </button>
-        {[1, 2, 3, 4, 5, 6].map((pageNumber) => (
-          <button key={pageNumber} onClick={() => handlePageClick(pageNumber)} className={pageNumber === page ? 'active' : ''}>{pageNumber}</button>
-        ))}
+
+        {pageNumbers.map((pageNumber) => (
+          <button
+          key={pageNumber}
+          onClick={() => handlePageClick(pageNumber)}
+          className={pageNumber === page ? 'active' : ''} >
+            {pageNumber}
+          </button>
+))}
         <button
-        className='paginationArrow'
-        onClick={() => handlePageClick(page + 1)}>
+        className= 'paginationArrow'
+        onClick={() => handlePageClick(page + 1)}
+        disabled={page === 21}>
           <FaChevronRight/>
         </button>
       </div>

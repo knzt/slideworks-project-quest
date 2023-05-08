@@ -3,6 +3,7 @@ header {
     height: fit-content;
     padding: 1rem;
     padding-left: 3rem;
+    background: white;
  }
 
  .header-container {

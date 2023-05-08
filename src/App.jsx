@@ -1,14 +1,12 @@
 
 import './App.css'
-import Header from './components/Header/Header'
-import Slider from './components/Slider/Slider'
+import Container from './components/Container/Container'
 
 function App() {
 
   return (
     <>
-     <Header/>
-     <Slider/>
+     <Container/>
     </>
   )
 }

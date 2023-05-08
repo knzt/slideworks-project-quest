@@ -9,9 +9,11 @@ function App() {
 
   return (
     <ThemeProvider>
+      <>
       <Container />
       <MovieList />
       <Footer />
+      </>
     </ThemeProvider>
   )
 }

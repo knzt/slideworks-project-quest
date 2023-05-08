@@ -85,7 +85,7 @@ function MovieList() {
         <select
         id='sort'
         className={isDarkMode ? 'dark-mode' : ''}
-        value={sortOption}
+        value={sortOption || ''}
         onChange={handleSortOptionChange}>
           <option value=''>Selecione uma opção</option>
           <option value='title'>Título</option>
@@ -96,7 +96,7 @@ function MovieList() {
           <label htmlFor='order' className={isDarkMode ? 'dark-mode' : ''}>Ordem:</label>
           <select
           id='order'
-          value={sortOrder}
+          value={sortOrder || ''}
           className={isDarkMode ? 'dark-mode' : ''}
           onChange={handleSortOrderChange}>
             <option value='asc'>Crescente</option>

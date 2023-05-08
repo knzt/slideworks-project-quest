@@ -52,6 +52,21 @@
     color: inherit !important;
   }
 
+  /* dark mode */
+
+  footer.dark-mode {
+    color: #716beacc;
+    background: black;
+  }
+
+  footer.dark-mode hr {
+    border-color: #716beacc;
+  }
+
+  footer.dark-mode img {
+    filter: brightness(0.5);
+  }
+
   @media screen and (max-width: 600px) {
       .footer {
         padding: 2rem;

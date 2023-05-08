@@ -3,10 +3,14 @@ import "./Footer.css";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 // local asset
 import Logo from "../../assets/img/whitelogo.png";
+// for dark mode
+import { useContext } from 'react';
+import { ThemeContext } from "../../themeContext";
 
 function Footer() {
+  const { isDarkMode } = useContext(ThemeContext);
   return (
-    <footer className="footer">
+    <footer className={isDarkMode ? 'dark-mode footer' : 'footer'}>
       <img src={Logo} alt="Logo" />
       <hr />
       <div className="footer__info">

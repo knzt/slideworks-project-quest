@@ -1,5 +1,6 @@
 import './MovieList.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { ThemeContext } from '../../themeContext';
 // icons
 import { FaStar } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
@@ -18,10 +19,12 @@ function MovieList() {
   const sortedMovies = sortOption ? sortMovies() : movies;
   // para os botões de paginação
   const [pageNumbers, setPageNumbers] = useState([1, 2, 3, '...', 21]);
+  // dark-mode
+  const { isDarkMode } = useContext(ThemeContext);
 
 
   useEffect(() => {
-    // requere os dados da API
+    // requere os dados dos filmes
     async function fetchMovies() {
       try {
         const response = await fetch(`https://movies.slideworks.cc/movies?page=${page}&limit=12`);
@@ -36,6 +39,7 @@ function MovieList() {
   }, [page]);
 
   function sortMovies() {
+    // descide, de acordo com a opção de listagem escolhida, como organizar a listagem de filmes
     if (sortOption === "title") {
       return movies.sort((a, b) => (sortOrder === 'asc' ? a.title.localeCompare(b.title) : b.title.localeCompare(a.title)));
     } else if (sortOption === "year") {
@@ -74,25 +78,34 @@ function MovieList() {
   }
 
   return (
-    <div className='movies'>
+    <div className={isDarkMode ? 'dark-mode' : 'movies'}>
+      {/* opções de exibição */}
       <div className='sort-options'>
-        <label htmlFor='sort'>Ordenar por:</label>
-        <select id='sort' value={sortOption} onChange={handleSortOptionChange}>
+        <label htmlFor='sort' className={isDarkMode ? 'dark-mode' : ''}>Ordenar por:</label>
+        <select
+        id='sort'
+        className={isDarkMode ? 'dark-mode' : ''}
+        value={sortOption}
+        onChange={handleSortOptionChange}>
           <option value=''>Selecione uma opção</option>
           <option value='title'>Título</option>
           <option value='year'>Lançamento</option>
           <option value='rating'>Avaliação</option>
         </select>
         <div className='sort-order'>
-          <label htmlFor='order'>Ordem:</label>
-          <select id='order' value={sortOrder} onChange={handleSortOrderChange}>
+          <label htmlFor='order' className={isDarkMode ? 'dark-mode' : ''}>Ordem:</label>
+          <select
+          id='order'
+          value={sortOrder}
+          className={isDarkMode ? 'dark-mode' : ''}
+          onChange={handleSortOrderChange}>
             <option value='asc'>Crescente</option>
             <option value='desc'>Decrescente</option>
           </select>
         </div>
       </div>
+      {/* listagem de filmes */}
       <ul className='movies-list'>
-
       {sortedMovies.map((movie) => (
           <li key={movie.title} className='movie-item'>
             <div className='movie-container'>
@@ -106,24 +119,23 @@ function MovieList() {
         ))}
       </ul>
       {/* pagination */}
-      <div className='pagination'>
+      <div className={isDarkMode ? 'dark-mode pagination' : 'pagination'}>
         <button
-          className='paginationArrow'
+          className={isDarkMode ? 'dark-mode paginationArrow' : 'paginationArrow'}
           onClick={() => handlePageClick(page - 1)}
           disabled={page === 1}>
             <FaChevronLeft/>
         </button>
-
         {pageNumbers.map((pageNumber) => (
           <button
           key={pageNumber}
           onClick={() => handlePageClick(pageNumber)}
-          className={pageNumber === page ? 'active' : ''} >
+          className={`${pageNumber === page ? 'active' : ''} ${isDarkMode ? 'dark-mode' : ''}`} >
             {pageNumber}
           </button>
-))}
+        ))}
         <button
-        className= 'paginationArrow'
+        className={isDarkMode ? 'dark-mode paginationArrow' : 'paginationArrow'}
         onClick={() => handlePageClick(page + 1)}
         disabled={page === 21}>
           <FaChevronRight/>

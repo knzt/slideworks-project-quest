@@ -42,6 +42,12 @@
     fill: white;
   }
 
+  .slider-caption {
+    margin: auto;
+    color: white;
+    line-height: 2.5rem;
+  }
+
   .slider-caption h2 {
     max-width: 60%;
   }
@@ -50,10 +56,10 @@
     margin-left: .5rem;
   }
 
-  .slider-caption {
-    margin: auto;
-    color: white;
-    line-height: 2.5rem;
+  @media only screen and (min-width: 1680px) {
+    .nuka-carousel {
+      max-height: 30rem;
+    }
   }
 
   @media only screen and (min-width: 1200px) {
@@ -77,13 +83,16 @@
   }
 
   @media only screen and (max-width: 756px) {
-    .nuka-carousel-prevButton {
-      display: none;
+    .nuka-carousel {
+      max-height: 15rem;
+      min-width: 100vw;
     }
 
+    .nuka-carousel-prevButton,
     .nuka-carousel-nextButton {
       display: none;
     }
+
   }
 
 

@@ -1,4 +1,6 @@
 header {
+    display: flex;
+    justify-content: flex-start;
     width: 100%;
     height: fit-content;
     padding: 1rem;
@@ -6,13 +8,43 @@ header {
     background: white;
  }
 
- .header-container {
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
- }
 
  .logo {
      width: 8rem;
      height: auto;
  }
+
+ header button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0 1.7rem;
+
+    &:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+}
+
+ header svg {
+    font-size: 1.7rem;
+    fill: #716bea;
+}
+
+header.dark-mode svg {
+    fill: #fcfcfc;
+    font-size: 1.5rem;
+}
+
+
+@media screen and (max-width: 600px) {
+    header {
+        justify-content: space-between;
+        padding-left: 1rem;
+    }
+
+    header button {
+        margin: 0;
+    }
+}
+

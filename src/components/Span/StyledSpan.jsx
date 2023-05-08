@@ -8,7 +8,7 @@ export const SpanContainer = styled.span`
     text-align: center;
     color: white;
     background-color: #726BEACC;
-    cursor: pointer;
+    cursor: default;
 
     &:hover {
         filter: brightness(90%);

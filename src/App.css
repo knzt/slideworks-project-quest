@@ -21,6 +21,14 @@
     overflow-x: hidden;
   }
 
+   .dark-mode {
+    background-color: black;
+   }
+
+   body.dark-mode {
+    background: #222;
+   }
+
 
   @media screen and (max-width: 400px) {
     body {

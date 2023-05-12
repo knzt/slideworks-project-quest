@@ -1,4 +1,4 @@
-import { SpanContainer } from "./spanStyles";
+import { SpanContainer } from "./StyledSpan";
 
 const RatingSpan = () => {
     return (

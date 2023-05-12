@@ -3,7 +3,7 @@ import "./slider.css";
 // icon
 import { FaStar } from "react-icons/fa";
 // styled-component
-import { SpanContainer } from "../Span/styledSpan";
+import { SpanContainer } from "../Span/StyledSpan";
 
 
 

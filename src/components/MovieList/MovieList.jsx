@@ -6,7 +6,7 @@ import { FaStar } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
 // styled-component
-import { SpanContainer } from '../Span/styledSpan';
+import { SpanContainer } from '../Span/StyledSpan';
 
 function MovieList() {
 //   para listagem de filmes:

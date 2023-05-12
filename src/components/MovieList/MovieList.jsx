@@ -14,11 +14,11 @@ function MovieList() {
 // para paginação:
   const [page, setPage] = useState(1);
 // para escolher a ordem de exibição da lista:
-  const [sortOption, setSortOption] = useState(null);
-  const [sortOrder, setSortOrder] = useState('asc');
+  const [sortOption, setSortOption] = useState();
+  const [sortOrder, setSortOrder] = useState('');
   const sortedMovies = sortOption ? sortMovies() : movies;
   // para os botões de paginação
-  const [pageNumbers, setPageNumbers] = useState([1, 2, 3, '...', 21]);
+  const [pageNumbers, setPageNumbers] = useState([1, 2, 3,]);
   // dark-mode
   const { isDarkMode } = useContext(ThemeContext);
 
